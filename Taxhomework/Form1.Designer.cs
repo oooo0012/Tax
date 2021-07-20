@@ -106,6 +106,7 @@ namespace Taxhomework
             this.DTP2.Name = "DTP2";
             this.DTP2.Size = new System.Drawing.Size(200, 25);
             this.DTP2.TabIndex = 24;
+            this.DTP2.Value = new System.DateTime(2021, 7, 20, 0, 0, 0, 0);
             // 
             // DTP1
             // 
@@ -113,6 +114,7 @@ namespace Taxhomework
             this.DTP1.Name = "DTP1";
             this.DTP1.Size = new System.Drawing.Size(200, 25);
             this.DTP1.TabIndex = 23;
+            this.DTP1.Value = new System.DateTime(2021, 7, 14, 0, 0, 0, 0);
             // 
             // btnReset
             // 
@@ -202,7 +204,7 @@ namespace Taxhomework
             this.使用牌照稅應納稅額試算.Font = new System.Drawing.Font("新細明體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.使用牌照稅應納稅額試算.Location = new System.Drawing.Point(240, 46);
             this.使用牌照稅應納稅額試算.Name = "使用牌照稅應納稅額試算";
-            this.使用牌照稅應納稅額試算.Size = new System.Drawing.Size(389, 34);
+            this.使用牌照稅應納稅額試算.Size = new System.Drawing.Size(378, 33);
             this.使用牌照稅應納稅額試算.TabIndex = 30;
             this.使用牌照稅應納稅額試算.Text = "使用牌照稅應納稅額試算";
             // 

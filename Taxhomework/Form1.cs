@@ -22,6 +22,23 @@ namespace Taxhomework
             this.Init();
         }
 
+        #region //處理日期按鈕顯示
+        private void rad1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.DTP1.Visible = false;
+            this.DTP2.Visible = false;
+            this.label5.Visible = false;
+            this.label7.Visible = false;
+        }
+        private void rad2_CheckedChanged(object sender, EventArgs e)
+        {
+            this.DTP1.Visible = true;
+            this.DTP2.Visible = true;
+            this.label5.Visible = true;
+            this.label7.Visible = true;
+        }
+        #endregion
+
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             int Scooter = this.scooter();
@@ -32,11 +49,7 @@ namespace Taxhomework
             int perc = 0;
             DateTime start = DTP1.Value;
             DateTime end = DTP2.Value;
-            if (start > end)
-            {
-                MessageBox.Show("錯誤!!起始日大於結束日");
-                return;
-            }
+            
 
             int years = 365;
 
@@ -88,7 +101,7 @@ namespace Taxhomework
                 int dayCount = ts.Days + 1;
                 if (i % 400 == 0)
                     years = 366;
-                else if (i % 4 == 0 && i % 100 != 0)
+                else if (i % 4 == 0 && i % 100 != 0)　//閏年
                     years = 366;
                 else
                     years = 365;
@@ -105,7 +118,13 @@ namespace Taxhomework
                 listBox1.Items.Add($"用途: {cbx1.Text}");
                 listBox1.Items.Add($"計算公式: {perc} * {dayCount} / {years} = {mony}元");
                 listBox1.Items.Add($"應納稅額: 共 {mony} 元");
-                listBox1.Items.Add("---------------------------------------------------------------");
+                listBox1.Items.Add("---");
+
+                if (start > end)
+                {
+                    MessageBox.Show("錯誤!!起始日大於結束日");
+                    return;
+                }
             }
         }
 
@@ -113,7 +132,7 @@ namespace Taxhomework
         {
             this.Init();
         }
-
+        #region
         private void cbx1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbx1.Text == "機車")
@@ -208,24 +227,7 @@ namespace Taxhomework
                 cbxcc.SelectedIndex = 0;
             }
         }
-
-        private void rad1_CheckedChanged(object sender, EventArgs e)
-        {
-            this.DTP1.Visible = false;
-            this.DTP2.Visible = false;
-            this.label5.Visible = false;
-            this.label7.Visible = false;
-            DTP1.Value = new DateTime(DateTime.Now.Year, 01, 01);
-            DTP2.Value = new DateTime(DateTime.Now.Year, 12, 31);
-        }
-
-        private void rad2_CheckedChanged(object sender, EventArgs e)
-        {
-            this.DTP1.Visible = true;
-            this.DTP2.Visible = true;
-            this.label5.Visible = true;
-            this.label7.Visible = true;
-        }
+        #endregion
         
         private void Init()
         {
@@ -233,15 +235,13 @@ namespace Taxhomework
             this.cbx1.SelectedIndex = 0;
             listBox1.Items.Clear();
             this.cbxcc.SelectedIndex = 0;
-            DTP1.Value = new DateTime(2021, 01, 01);
-            DTP2.Value = new DateTime(2021, 12, 31);
         }
-
+        #region
         private int scooter()
         {
-            string texttype = this.cbxcc.Text;
+            string scootertax = this.cbxcc.Text;
 
-            switch (texttype)
+            switch (scootertax)
             {
                 case "150以下 / 12HP以下(12.2PS以下)":
                     return 0;
@@ -263,9 +263,9 @@ namespace Taxhomework
         }
         private int truck()
         {
-            string textt = this.cbxcc.Text;
+            string trucktax = this.cbxcc.Text;
 
-            switch (textt)
+            switch (trucktax)
             {
                 case "500以下":
                     return 900;
@@ -311,9 +311,9 @@ namespace Taxhomework
         }
         private int coach()
         {
-            string textt = this.cbxcc.Text;
+            string coachtax = this.cbxcc.Text;
 
-            switch (textt)
+            switch (coachtax)
             {
                 case "600以下":
                     return 1080;
@@ -357,9 +357,9 @@ namespace Taxhomework
         }
         private int privatecar()
         {
-            string texttype = this.cbxcc.Text;
+            string privatecartax = this.cbxcc.Text;
 
-            switch (texttype)
+            switch (privatecartax)
             {
                 case "500以下 / 38HP以下(38.6PS以下)":
                     return 1620;
@@ -390,9 +390,9 @@ namespace Taxhomework
         }
         private int taxicar()
         {
-            string texttype = this.cbxcc.Text;
+            string taxicartax = this.cbxcc.Text;
 
-            switch (texttype)
+            switch (taxicartax)
             {
                 case "500以下 / 38HP以下(38.6PS以下)":
                     return 900;
@@ -421,5 +421,6 @@ namespace Taxhomework
 
             }
         }
+        #endregion
     }
 }
