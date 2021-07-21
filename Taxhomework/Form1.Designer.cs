@@ -210,6 +210,7 @@ namespace Taxhomework
             // 
             // listBox1
             // 
+            this.listBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(246, 389);
